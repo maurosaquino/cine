@@ -28,10 +28,17 @@
         text-align: center;
     }
 
-    .sala{
+    .filas{
         width:100%;
         margin-top: 20px;
         display: inline-block;
+    }
+
+    .sala{
+        width:424px;
+        height:600px;
+        margin-left:auto;
+        margin-right: auto;
     }
 
     </style>
@@ -67,16 +74,20 @@
             
         };
         
+        let sala = document.createElement('div');
+        sala.classList.add('sala');
+
         let pantalla = document.createElement('div');
         pantalla.classList.add('pantalla');
         pantalla.innerHTML='PANTALLA';
 
-        let sala = document.createElement('div');
-        sala.classList.add('sala');
-        
-        sala.appendChild(tbl);
+        let filas = document.createElement('div');
+        filas.classList.add('filas');
+        filas.appendChild(tbl);
 
-        document.getElementsByTagName('body')[0].appendChild(pantalla);
+        sala.appendChild(pantalla);
+        sala.appendChild(filas);
+
         document.getElementsByTagName('body')[0].appendChild(sala);
 
 </script>
