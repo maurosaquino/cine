@@ -8,6 +8,9 @@
     <style>
     table{
         border-collapse:collapse;
+        margin-left: auto;
+        margin-right: auto;
+        
     }
     .selected{
         background:yellow;
@@ -16,6 +19,21 @@
     .rowleft{
         margin-left: 10px;
     }
+
+    .pantalla{
+        width:100%;
+        padding-top: 10px;
+        padding-bottom: 10px;
+        border:solid 1px black;
+        text-align: center;
+    }
+
+    .sala{
+        width:100%;
+        margin-top: 20px;
+        display: inline-block;
+    }
+
     </style>
 </head>
 <body>
@@ -25,15 +43,13 @@
         tbl.style.border = 'solid';
         
         
-
         for(x=0;x<13;x++){
             
             let tr  = document.createElement('tr');
             tbl.appendChild(tr);
 
             for(y=0;y<25;y++){
-                
-
+        
                 let td = document.createElement('td');
                 
                 if (y==2 || y==23){
@@ -50,9 +66,18 @@
             };
             
         };
-    
         
-        document.getElementsByTagName('body')[0].appendChild(tbl);
+        let pantalla = document.createElement('div');
+        pantalla.classList.add('pantalla');
+        pantalla.innerHTML='PANTALLA';
+
+        let sala = document.createElement('div');
+        sala.classList.add('sala');
+        
+        sala.appendChild(tbl);
+
+        document.getElementsByTagName('body')[0].appendChild(pantalla);
+        document.getElementsByTagName('body')[0].appendChild(sala);
 
 </script>
 </body>
