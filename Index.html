@@ -55,7 +55,7 @@
     <script>
                 
         const tbl = document.createElement('table');
-        
+        const lugares = [];
         
         for(x=0;x<13;x++){
             
@@ -65,6 +65,7 @@
             for(y=0;y<25;y++){
         
                 let td = document.createElement('td');
+                let asiento = {posicion:td,fila:x,columna:y};
                 
                 if (y==2 || y==23){
                     let div = document.createElement('div');
@@ -73,6 +74,8 @@
                 }
 
                 td.addEventListener('click',function(){td.classList.toggle('selected');});
+                
+                lugares.push(asiento);
                 tr.appendChild(td);
 
             };
