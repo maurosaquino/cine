@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+    table{
+        border-collapse:collapse;
+    }
+    .selected{
+        background:yellow;
+    }
+
+    .rowleft{
+        margin-left: 10px;
+    }
+    </style>
+</head>
+<body>
+    <script>
+                
+        const tbl = document.createElement('table');
+        tbl.style.border = 'solid';
+        
+        
+
+        for(x=0;x<13;x++){
+            
+            let tr  = document.createElement('tr');
+            tbl.appendChild(tr);
+
+            for(y=0;y<25;y++){
+                
+
+                let td = document.createElement('td');
+                
+                if (y==2 || y==23){
+                    let div = document.createElement('div');
+                    div.classList.add('rowleft');
+                    tr.appendChild(div);
+                }
+
+                td.style.border ='solid';
+                td.addEventListener('click',function(){td.classList.toggle('selected');});
+                td.innerHTML = 'A';
+                tr.appendChild(td);
+
+            };
+            
+        };
+    
+        
+        document.getElementsByTagName('body')[0].appendChild(tbl);
+
+</script>
+</body>
+
+
+
+</html>
