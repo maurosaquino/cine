@@ -21,7 +21,11 @@
     }
 
     .selected{
-        background:yellow;
+        background:greenyellow;
+    }
+
+    .tomado{
+        background:red;
     }
 
     .rowleft{
@@ -56,6 +60,7 @@
                 
         const tbl = document.createElement('table');
         const lugares = [];
+        let abecedario = ['A','B','C','D','E','F','G','H','I','J','K','L','M'];
         
         for(x=0;x<13;x++){
             
@@ -65,16 +70,20 @@
             for(y=0;y<25;y++){
         
                 let td = document.createElement('td');
-                let asiento = {posicion:td,fila:x,columna:y};
-                
+                let asiento = {posicion:td,fila:abecedario[x],columna:y+1,disponible:1};
+
                 if (y==2 || y==23){
                     let div = document.createElement('div');
                     div.classList.add('rowleft');
                     tr.appendChild(div);
                 }
 
-                td.addEventListener('click',function(){td.classList.toggle('selected');});
-                
+                if (asiento.disponible == 1){
+                    td.addEventListener('click',function(){seleccionar(td,asiento)});
+                }else{
+                    td.classList.add('tomado');
+                }
+
                 lugares.push(asiento);
                 tr.appendChild(td);
 
@@ -97,6 +106,16 @@
         sala.appendChild(filas);
 
         document.getElementsByTagName('body')[0].appendChild(sala);
+
+        function seleccionar(td,asiento){
+            if(asiento.disponible==1){
+                td.classList.toggle('selected');
+                asiento.disponible=0;
+            }else{
+                asiento.disponible=1;
+                td.classList.toggle('selected');
+            }
+        };
 
 </script>
 </body>
