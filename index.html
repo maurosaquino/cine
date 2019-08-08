@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+    table{
+        border-collapse:collapse;
+        margin-left: auto;
+        margin-right: auto;
+        border: solid 2px darkgrey;
+        
+    }
+    td{
+        width:15px;
+        height:15px;
+        border:solid 2px grey;
+    }
+    .selected{
+        background:greenyellow;
+    }
+    .tomado{
+        background:red;
+    }
+    .rowleft{
+        margin-left: 10px;
+    }
+    .pantalla{
+        width:100%;
+        padding-top: 10px;
+        padding-bottom: 10px;
+        border:solid 1px black;
+        text-align: center;
+    }
+    .filas{
+        width:100%;
+        margin-top: 20px;
+        display: inline-block;
+    }
+    .sala{
+        width:424px;
+        height:600px;
+        margin-left:auto;
+        margin-right: auto;
+    }
+    </style>
+</head>
+<body>
+    <script>
+                
+        const tbl = document.createElement('table');
+        const lugares = [];
+        let abecedario = ['A','B','C','D','E','F','G','H','I','J','K','L','M'];
+        
+        for(x=0;x<13;x++){
+            
+            let tr  = document.createElement('tr');
+            tbl.appendChild(tr);
+            for(y=0;y<25;y++){
+        
+                let td = document.createElement('td');
+                let asiento = {posicion:td,fila:abecedario[x],columna:y+1,disponible:1};
+                if (y==2 || y==23){
+                    let div = document.createElement('div');
+                    div.classList.add('rowleft');
+                    tr.appendChild(div);
+                }
+                if (asiento.disponible == 1){
+                    td.addEventListener('click',function(){seleccionar(td,asiento)});
+                }else{
+                    td.classList.add('tomado');
+                }
+                lugares.push(asiento);
+                tr.appendChild(td);
+            };
+            
+        };
+        
+        let sala = document.createElement('div');
+        sala.classList.add('sala');
+        let pantalla = document.createElement('div');
+        pantalla.classList.add('pantalla');
+        pantalla.innerHTML='PANTALLA';
+        let filas = document.createElement('div');
+        filas.classList.add('filas');
+        filas.appendChild(tbl);
+        sala.appendChild(pantalla);
+        sala.appendChild(filas);
+        document.getElementsByTagName('body')[0].appendChild(sala);
+        function seleccionar(td,asiento){
+            if(asiento.disponible==1){
+                td.classList.toggle('selected');
+                asiento.disponible=0;
+            }else{
+                asiento.disponible=1;
+                td.classList.toggle('selected');
+            }
+        };
+</script>
+</body>
+
+
+
+</html>
