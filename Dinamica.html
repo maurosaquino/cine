@@ -10,8 +10,16 @@
         border-collapse:collapse;
         margin-left: auto;
         margin-right: auto;
+        border: solid 2px darkgrey;
         
     }
+
+    td{
+        width:15px;
+        height:15px;
+        border:solid 2px grey;
+    }
+
     .selected{
         background:yellow;
     }
@@ -21,6 +29,7 @@
     }
 
     .pantalla{
+        width:100%;
         padding-top: 10px;
         padding-bottom: 10px;
         border:solid 1px black;
@@ -28,6 +37,7 @@
     }
 
     .filas{
+        width:100%;
         margin-top: 20px;
         display: inline-block;
     }
@@ -45,7 +55,6 @@
     <script>
                 
         const tbl = document.createElement('table');
-        tbl.style.border = 'solid';
         
         
         for(x=0;x<13;x++){
@@ -63,9 +72,7 @@
                     tr.appendChild(div);
                 }
 
-                td.style.border ='solid';
                 td.addEventListener('click',function(){td.classList.toggle('selected');});
-                td.innerHTML = 'A';
                 tr.appendChild(td);
 
             };
